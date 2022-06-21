@@ -1,41 +1,43 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "strict": true,
-    "jsx": "preserve",
-    "moduleResolution": "node",
-    "experimentalDecorators": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "useDefineForClassFields": true,
-    "sourceMap": true,
-    "baseUrl": ".",
-    "types": [
+    "target": "esnext",                            // 用来指定 ES 版本 ESNext(最新版)
+    "module": "esnext",                            // 指定要使用模块化的规范 : 'None', 'CommonJS', 'AMD', 'System', 'UMD', 'ES6'/'ES2015', 'ES2020' or 'ESNext'
+    "strict": false,                                // 所有的严格检查的总开关，默认false
+    "jsx": "preserve",                             // 指定 jsx 格式
+    "moduleResolution": "node",                    // 模块解析策略，ts默认用node的解析策略，即相对的方式导入
+    "experimentalDecorators": true,                // 启用实验性的ES装饰器
+    "skipLibCheck": true,                          // 是否跳过声明文件的类型检查，这可以在编译期间以牺牲类型系统准确性为代价来节省时间，默认：false。
+    "esModuleInterop": true,                       // 允许export=导出，由import from 导入
+    "allowSyntheticDefaultImports": true,          // 允许从没有设置默认导出的模块中默认导入。这并不影响代码的输出，仅为了类型检查
+    "forceConsistentCasingInFileNames": true,      // 禁止对同一个文件使用大小写不一致的引用
+    "useDefineForClassFields": true,               // 此标志用作迁移到即将推出的类字段标准版本的一部分，默认：false。
+    "sourceMap": true,                             // 生成目标文件的sourceMap文件
+    "baseUrl": ".",                                // 解析非相对模块的基地址，默认是当前目录
+    "types": [                                     // 用来指定需要包含的模块，并将其包含在全局范围内。
       "webpack-env"
     ],
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
+    "paths": {                                     // 用于设置模块名称基于baseUrl的路径映射关系。
+      "@/*": ["src/*"],
+      "*": ["*", "src/*"]
     },
-    "lib": [
+    "lib": [                                       // TS需要引用的库，即声明文件，es5 默认引用dom、es5、scripthost,如需要使用es的高级版本特性，通常都需要配置，如es8的数组新特性需要引入"ES2019.Array"
       "esnext",
       "dom",
       "dom.iterable",
       "scripthost"
     ]
   },
-  "include": [
+  "include": [                                    // 指定被编译文件所在的目录。
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
+    "types/*.d.ts",
+    "mock/*.ts",
+    "vite.config.ts"
+, "src/utils/mock/user.js", "src/utils/mock/index.ts", "src/assets/status/index.js"  ],
+  "exclude": [                                    // 提供用于禁用 JavaScript 项目中某个模块的类型获取的配置
+    "node_modules", 
+    "dist", 
+    "**/*.js"
   ]
 }
