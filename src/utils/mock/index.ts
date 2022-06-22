@@ -1,5 +1,5 @@
 const Mock = require('mockjs');
-import * as all from './record'
+import{permissionRouter} from './record'
 
 // 登录
 Mock.mock("/login", (req, res) => {
@@ -8,5 +8,5 @@ Mock.mock("/login", (req, res) => {
 
 // 菜单栏
 Mock.mock("/getMenu", (req, res) => {
-  return Mock.mock(all.permissionRouter);
+  return Mock.mock(permissionRouter);
 });

@@ -1,25 +1,27 @@
 // 导航菜单
-export const permissionRouter = {
-    path: "/permission",
-    redirect: "/permission/page/index",
+export const permissionRouter = [
+  {
+    path: "/admin",
+    name:"admin",
+    redirect: "/admin/user",
     meta: {
-      title: "menus.permission",
-      icon: "lollipop",
+      title: "后台",
     },
     children: [
       {
-        path: "/permission/page/index",
-        name: "permissionPage",
+        path: "/admin/user",
+        name: "user",
         meta: {
-          title: "menus.permissionPage"
+          title: "用户"
         }
       },
       {
-        path: "/permission/button/index",
-        name: "permissionButton",
+        path: "/admin/role",
+        name: "role",
         meta: {
-          title: "menus.permissionButton",
+          title: "权限",
         }
       }
     ]
-};
+  }
+]

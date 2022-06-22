@@ -1,30 +1,33 @@
 <template>
-  <div class="flex justify-center items-center h-screen-sm">
-    <noServer />
-    <div class="ml-12">
-      <p class="font-medium text-4xl mb-4"
-        v-motion
-        :initial="{ opacity: 0, y: 100 }"
-        :enter="{ opacity: 1, y: 0, transition: { delay: 100 }}">
+  <div class="icon">
+    <svg-icon icon-class="500" />
+    <div class="icon-text ml-12">
+      <p class="mb-4" 
+        v-motion="{
+          initial:{ opacity:0, y: 100 },
+          enter:{ opacity: 1, y: 0, },
+          time:600 }">
         500
       </p>
-      <p class="mb-4 text-gray-500"
-        v-motion
-        :initial="{ opacity: 0, y: 100 }"
-        :enter="{ opacity: 1, y: 0, transition: { delay: 300 }}">
+      <p class="mb-4"
+          v-motion="{
+          initial:{ opacity:0, y: 100 },
+          enter:{ opacity: 1, y: 0, },
+          time:900}">
         抱歉，服务器出错了
       </p>
-      <el-button type="primary"
+      <el-button type="primary" size="small"
         @click="$router.push('/')"
-        v-motion
-        :initial="{ opacity: 0, y: 100 }"
-        :enter="{ opacity: 1, y: 0, transition: { delay: 500 }}">
+        v-motion="{
+          initial:{ opacity:0, y: 100 },
+          enter:{ opacity: 1, y: 0, },
+          time:1200 }">
         返回首页
       </el-button>
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
-import noServer from "@/assets/status/500.svg";
-</script>
+<style lang="scss" scoped>
+@import '@/assets/style/error.scss';
+</style>
