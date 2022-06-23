@@ -4,7 +4,9 @@
         <el-sidebar />
     </el-aside>
     <el-container>
-    <el-header>Header</el-header>
+    <el-header>
+        <el-navbar />
+    </el-header>
     <el-main>
         <router-view></router-view>
     </el-main>
@@ -13,7 +15,8 @@
 </template>
 
 <script lang='ts' setup>
-import elSidebar from './components/sidebar.vue'
+import elSidebar from './components/Sidebar/index.vue'
+import elNavbar from './components/Navbar/index.vue'
 </script>
 
 <style lang="scss" scoped>
