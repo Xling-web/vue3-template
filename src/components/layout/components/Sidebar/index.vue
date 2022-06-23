@@ -40,6 +40,6 @@ const handleClose = (key: string, keyPath: string[]) => {
 <style lang="scss" scoped>
 .el-menu-vertical:not(.el-menu--collapse) {
   width: 200px;
-  height:100%
+  height:100%;
 }
 </style>

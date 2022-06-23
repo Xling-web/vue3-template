@@ -1,14 +1,22 @@
-import { createApp, useAttrs } from 'vue'
+import { createApp, useAttrs, createVNode,h } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
 import "@pureadmin/components/dist/index.css";
 import "@pureadmin/components/dist/theme.css";
+import * as Icons from '@element-plus/icons-vue'
 import TWEEN from "@tweenjs/tween.js";
 import './assets/icons' 
 require('./utils/mock');
 
 const app = createApp(App)
+
+const Icon = (props:{icon:string}) => {
+    const {icon} = props;
+    // 创建icon标签
+    return h('i',{class:"el-icon",style:'font-size:16px;'},[createVNode(Icons[icon as keyof typeof Icons])])
+}
+app.component('Icon',Icon)
 
 app.directive('motion', {
     mounted(el,{value}) {

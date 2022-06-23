@@ -6,13 +6,15 @@ export const permissionRouter = [
     redirect: "/admin/user",
     meta: {
       title: "后台",
+      icon:"Cpu"
     },
     children: [
       {
         path: "/admin/user",
         name: "user",
         meta: {
-          title: "用户"
+          title: "用户",
+          icon:"User"
         }
       },
       {
@@ -20,6 +22,7 @@ export const permissionRouter = [
         name: "role",
         meta: {
           title: "权限",
+          icon:"Operation"
         }
       }
     ]

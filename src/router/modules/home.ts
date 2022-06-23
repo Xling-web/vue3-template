@@ -7,6 +7,7 @@ const homeRouter= {
   redirect: "/welcome",
   meta: {
     title: 'home',
+    icon:"House"
   },
   children: [
     {
@@ -14,7 +15,8 @@ const homeRouter= {
       name: "welcome",
       component: () => import("@/views/welcome/index.vue"),
       meta: {
-        title: "首页"
+        title: "首页",
+        icon:"House"
       }
     }
   ]
