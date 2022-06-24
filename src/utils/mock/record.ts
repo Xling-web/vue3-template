@@ -26,5 +26,32 @@ export const permissionRouter = [
         }
       }
     ]
+  },
+  {
+    path: "/ceshi",
+    name:"ceshi",
+    redirect: "/ceshi/user",
+    meta: {
+      title: "测试",
+      icon:"Cpu"
+    },
+    children: [
+      {
+        path: "/ceshi/user",
+        name: "ceshi1",
+        meta: {
+          title: "测试子1",
+          icon:"User"
+        }
+      },
+      {
+        path: "/ceshi/role",
+        name: "ceshi2",
+        meta: {
+          title: "测试子2",
+          icon:"Operation"
+        }
+      }
+    ]
   }
 ]

@@ -5,19 +5,16 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Breadcrumb: typeof import('./src/components/layout/components/Navbar/components/breadcrumb.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
     ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElContainer: typeof import('element-plus/es')['ElContainer']
-    ElFlod: typeof import('element-plus/es')['ElFlod']
     ElHeader: typeof import('element-plus/es')['ElHeader']
-    ElIcon: typeof import('element-plus/es')['ElIcon']
-    ElLogo: typeof import('element-plus/es')['ElLogo']
     ElMain: typeof import('element-plus/es')['ElMain']
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
-    ElMenuItemGroup: typeof import('element-plus/es')['ElMenuItemGroup']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     Layout: typeof import('./src/components/layout/index.vue')['default']
