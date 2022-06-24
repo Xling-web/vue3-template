@@ -3,12 +3,12 @@ import VuexPersistence from 'vuex-persist'
 
 const vuexLocal = new VuexPersistence({
     storage: window.localStorage,
-    modules: ['persist','user']
+    modules: ['navbar','user']
 })
 
 // 动态加载modules
 const modules = {};
-const files = require.context("./", true, /\.ts$/);
+const files = require.context("./", true, /\index.ts$/);
 files.keys().filter((key) => {
   if (key === "./index.ts") return false;
     return true;

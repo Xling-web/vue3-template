@@ -1,11 +1,11 @@
-interface obj {
-  [propName:string]:any
-}
+import { Module } from 'vuex'
+import userTypes from './type'
+import RootStateTypes from '../../type'
 
 import {routes} from '@/router/index'
 import _ from 'lodash';
 
-const store = {
+const store: Module<userTypes,RootStateTypes> = {
   state: {
     token:'1312312',
     // 给侧边导航使用的菜单栏数组
@@ -19,11 +19,11 @@ const store = {
     }
   },
   mutations: {
-    readToken(state:obj,payload:obj){
+    readToken(state,payload){
       state.token = payload.token
     },
     // 异步获取路由菜单
-    asyncActionRoutes(state:obj,payload){
+    asyncActionRoutes(state,payload){
       let routeList = routes.concat(...payload)
       // 给侧边导航使用的菜单栏数组
       state.menusTree = routeList.filter((v)=>{

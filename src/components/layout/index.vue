@@ -1,6 +1,6 @@
 <template>
 <el-container>
-    <el-aside width="200px">
+    <el-aside width="auto">
         <el-sidebar />
     </el-aside>
     <el-container>
@@ -24,7 +24,9 @@ import elNavbar from './components/Navbar/index.vue'
     height:100vh;
     box-sizing: border-box;
 }
-.el-menu{
-    border:0;
+
+.el-header{
+    padding: 0;
 }
+
 </style>

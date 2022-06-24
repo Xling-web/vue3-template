@@ -7,14 +7,15 @@ import "@pureadmin/components/dist/theme.css";
 import * as Icons from '@element-plus/icons-vue'
 import TWEEN from "@tweenjs/tween.js";
 import './assets/icons' 
+import './assets/style/index.scss'
+import "./assets/iconfont/iconfont.css";
 require('./utils/mock');
-
 const app = createApp(App)
 
-const Icon = (props:{icon:string}) => {
-    const {icon} = props;
+const Icon = (props:{icon:string,size:18}) => {
+    const {icon,size} = props;
     // 创建icon标签
-    return h('i',{class:"el-icon",style:'font-size:16px;'},[createVNode(Icons[icon as keyof typeof Icons])])
+    return h('i',{class:"el-icon",style:`font-size:${size}px;`},[createVNode(Icons[icon as keyof typeof Icons])])
 }
 app.component('Icon',Icon)
 

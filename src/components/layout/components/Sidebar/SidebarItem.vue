@@ -20,13 +20,18 @@
 <script lang='ts' setup>
 import {reactive,toRefs} from 'vue'
 
-const state = reactive({
+interface stateProps {
+    [propName:string]:any
+}
+
+const state:stateProps = reactive({
     onlyOneChild:{},//但只有一个子路由时，默认显示子路由
 })
 const {onlyOneChild} = toRefs(state)
 
 const props = defineProps<{
     routes:{
+        [x: string]: any;
         type:Object,
         required:true
     }
@@ -52,9 +57,3 @@ function hasOneShowingChild(children = [], parent) {
 }
 
 </script>
-
-<style lang="scss" scoped>
-.icons{
-    font-size:18px;
-}
-</style>
