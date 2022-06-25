@@ -12,7 +12,8 @@ import { useRoute } from 'vue-router';
 const route = useRoute()
 
 const state = reactive({
-  breadcrumb:[]
+  breadcrumb:[],
+  homePage:{path: "/welcome",name: "welcome",meta: {"title": "首页","icon": "House"}}
 })
 const {breadcrumb} = toRefs(state)
 
@@ -26,30 +27,27 @@ onBeforeMount(()=>{
 
 function getBreadcrumb(route){
   let matched = route.matched
-  console.log(route)
+  if(route.name === 'welcome')matched = []
+  state.breadcrumb = [state.homePage,...matched]
 }
 </script>
 
 <style lang="scss" scoped>
-.breadcrumb-enter-from,
-.breadcrumb-leave-to {
+// 进入前
+.breadcrumb-enter-from{
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateX(20px);
+}
+.breadcrumb-leave-to{
+  opacity: 0;
+  transform: translateX(-20px);
 }
 
+// 进入时（离开时）
 .breadcrumb-enter-active,
-.breadcrumb-leave-active {
-  transition: all 1s ease;
+.breadcrumb-leave-active
+{
+  transition: all 0.5s;
 }
 
-.breadcrumb-leave-active {
-  /* 离开动画生效时，绝对定位就会脱离标准流 */
-  opacity: 0;
-  transform: translateY(-30px);
-}
-
-/* 【删除数字时，列表也做动画。】 */
-.breadcrumb-move {
-  transition: transform 1s ease;
-}
 </style>

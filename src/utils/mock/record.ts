@@ -42,7 +42,17 @@ export const permissionRouter = [
         meta: {
           title: "测试子1",
           icon:"User"
-        }
+        },
+        children:[
+          {
+            path: "/ceshi/user/zi",
+            name: "ceshisun",
+            meta: {
+              title: "测试孙1",
+              icon:"Operation"
+            }
+          }
+        ]
       },
       {
         path: "/ceshi/role",

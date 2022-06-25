@@ -1,5 +1,5 @@
 <template>
- user页面
+  <router-view></router-view>
 </template>
 
 <script lang='ts' setup>

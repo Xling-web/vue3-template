@@ -1,5 +1,5 @@
 <template>
- user页面
+zi页面
 </template>
 
 <script lang='ts' setup>

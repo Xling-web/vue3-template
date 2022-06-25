@@ -10,16 +10,13 @@
             <Icon :icon="routes.meta.icon"></Icon>
             <span>{{routes.meta.title}}</span>
         </template>
-        <el-menu-item v-for="v in routes.children" :key="v.name" :index="v.path">
-            <Icon :icon="v.meta.icon"></Icon>
-            {{v.meta.title}}
-        </el-menu-item>
+        <sidebar-item v-for="v in routes.children" :key="v.name" :routes="v"></sidebar-item>
     </el-sub-menu>
 </template>
 
 <script lang='ts' setup>
 import {reactive,toRefs} from 'vue'
-
+import { RouteRecordRaw } from 'vue-router'
 interface stateProps {
     [propName:string]:any
 }
@@ -39,18 +36,17 @@ const props = defineProps<{
 
 // 判断菜单显示层级
 function hasOneShowingChild(children = [], parent) {
-    const showingChildren = children.filter(item => {
+    const showingChildren:RouteRecordRaw[] = children.filter(item => {
         state.onlyOneChild = item
         return true
     })
     // 当只有一个子路由器时，默认情况下会显示子路由器
     if (showingChildren.length === 1) {
-        return true
+        if(showingChildren[0].name === 'welcome')return true
     }
-
     // 则如果没有要显示的子路由器，显示父路由器
     if (showingChildren.length === 0) {
-        state.onlyOneChild = { ... parent, path: '', noShowingChildren: true }
+        state.onlyOneChild = { ... parent, noShowingChildren: true }
         return true
     }
     return false

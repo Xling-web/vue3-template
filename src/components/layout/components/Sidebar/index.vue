@@ -6,6 +6,7 @@
       class="el-menu-vertical"
       :collapse="isCollapse"
       router
+      @select="handleOpen"
       :unique-opened="false"
       background-color="#001529"
       text-color="rgba(254, 254, 254, 0.65)"
@@ -31,6 +32,12 @@ const state = reactive({
     routeList:store.state.user.menusTree,               // 导航数据
 })
 const {activeMenu,routeList} = toRefs(state)
+
+// 菜单激活回调
+const handleOpen = (key: string) => {
+  let routeActive = {name:route.meta?.title,path:key}
+  console.log(routeActive)
+}
 
 //是否水平折叠收起菜单
 const isCollapse = computed(()=>{

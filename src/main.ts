@@ -12,6 +12,8 @@ import "./assets/iconfont/iconfont.css";
 require('./utils/mock');
 const app = createApp(App)
 
+store.dispatch('getServerConfig')
+
 const Icon = (props:{icon:string,size:18}) => {
     const {icon,size} = props;
     // 创建icon标签
