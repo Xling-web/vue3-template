@@ -6,8 +6,7 @@
       class="el-menu-vertical"
       :collapse="isCollapse"
       router
-      @select="handleOpen"
-      :unique-opened="false"
+      :unique-opened="true"
       background-color="#001529"
       text-color="rgba(254, 254, 254, 0.65)"
       active-text-color="#fff"
@@ -18,7 +17,7 @@
 </template>
 
 <script lang='ts' setup>
-import { ref,reactive,toRefs,computed } from 'vue'
+import { ref,reactive,toRefs,computed, watch } from 'vue'
 import {useStore} from 'vuex'
 import { useRoute } from 'vue-router';
 import SidebarItem from './SidebarItem.vue'
@@ -28,15 +27,21 @@ const store = useStore()
 const route = useRoute()
 
 const state = reactive({
-    activeMenu:route.path,      //当前激活的路由
-    routeList:store.state.user.menusTree,               // 导航数据
+  activeMenu:route.path,      //当前激活的路由
+  routeList:store.state.user.menusTree,               // 导航数据
 })
 const {activeMenu,routeList} = toRefs(state)
 
+// 监听路由
+watch(route,(newVal)=>{
+  state.activeMenu = newVal.path
+})
+
 // 菜单激活回调
-const handleOpen = (key: string) => {
-  let routeActive = {name:route.meta?.title,path:key}
-  console.log(routeActive)
+const handleOpen = () => {
+ let routeActive = {name:route.meta.title,path:route.path}
+  // store.commit('SET_TAGS',{routeActive})
+  // console.log(routeActive)
 }
 
 //是否水平折叠收起菜单

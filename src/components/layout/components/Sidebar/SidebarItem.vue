@@ -1,6 +1,6 @@
 <template>
     <template v-if="hasOneShowingChild(routes.children,routes) && (!onlyOneChild.children||onlyOneChild.noShowingChildren)">
-        <el-menu-item :index="onlyOneChild.path">
+        <el-menu-item :index="onlyOneChild.path" @click="handleOpen(onlyOneChild)">
             <Icon :icon="onlyOneChild.meta.icon"></Icon>
             <template #title>{{onlyOneChild.meta.title}}</template>
         </el-menu-item>
@@ -17,6 +17,10 @@
 <script lang='ts' setup>
 import {reactive,toRefs} from 'vue'
 import { RouteRecordRaw } from 'vue-router'
+import {useStore} from 'vuex'
+
+const store = useStore()
+
 interface stateProps {
     [propName:string]:any
 }
@@ -33,6 +37,12 @@ const props = defineProps<{
         required:true
     }
 }>()
+
+// 激活菜单栏
+function handleOpen(val){
+    let routeActive = {name:val.meta.title,path:val.path}
+    store.commit('SET_TAGS',{routeActive})
+}
 
 // 判断菜单显示层级
 function hasOneShowingChild(children = [], parent) {

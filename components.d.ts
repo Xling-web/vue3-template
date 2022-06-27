@@ -30,9 +30,12 @@ declare module '@vue/runtime-core' {
     Navbar: typeof import('./src/components/layout/components/Navbar/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Screenfull: typeof import('./src/components/layout/components/Navbar/components/screenfull.vue')['default']
+    Setting: typeof import('./src/components/layout/components/setting/index.vue')['default']
     Sidebar: typeof import('./src/components/layout/components/Sidebar/index.vue')['default']
     SidebarItem: typeof import('./src/components/layout/components/Sidebar/SidebarItem.vue')['default']
     SvgIcon: typeof import('./src/components/SvgIcon/index.vue')['default']
+    Tag: typeof import('./src/components/layout/components/tag/index.vue')['default']
   }
 }
 
