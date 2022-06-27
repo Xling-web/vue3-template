@@ -5,6 +5,7 @@ import {initRouter} from './utils'
 import homeRouter from "./modules/home";
 import errorRouter from "./modules/error";
 import surplusRouter from "./modules/surplus";
+import NProgress from "@/utils/progress";
 
 // 原始静态路由（未做任何处理）
 const routes:Array<RouteRecordRaw> = [homeRouter, errorRouter, surplusRouter];
@@ -19,6 +20,7 @@ const whiteRoute:Array<string> = ['/login']
 
 // 全局前置守卫
 router.beforeEach((to,from,next)=>{
+  NProgress.start();
   if(!from?.name && from.name !== '/login'){
     initRouter('admin').then((router:Router)=>{
       router.push(to.fullPath)
@@ -37,6 +39,10 @@ router.beforeEach((to,from,next)=>{
     next()
   }
 })
+
+router.afterEach(() => {
+  NProgress.done();
+});
 
 export {
   routes

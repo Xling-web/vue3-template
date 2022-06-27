@@ -13,7 +13,7 @@ const defaultConfig = {
         Accept: "application/json, text/plain, */*",
         "Content-Type": "application/json",
         "X-Requested-With": "XMLHttpRequest"
-    },
+    }, 
   // 数组格式参数序列化
   // paramsSerializer: params => qs.stringify(params, { indices: false })
 };

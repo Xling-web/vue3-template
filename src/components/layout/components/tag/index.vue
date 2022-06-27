@@ -7,8 +7,8 @@
       :closable="v.path !== '/welcome'"
       @click="onTags(v)" 
       @close="delTags(v)"
-      v-on:mouseenter="moveIn($event)"
-      v-on:mouseleave="moveOut($event)">
+      v-on:mouseenter="moveInOrOut($event,'in')"
+      v-on:mouseleave="moveInOrOut($event,'out')">
         {{v.name}}
         <div class="schedule"></div>
     </el-tag>
@@ -16,7 +16,7 @@
 </template>
 
 <script lang='ts' setup>
-import { reactive, toRefs, watch, ref } from 'vue';
+import { reactive, toRefs } from 'vue';
 import { useRoute,useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 
@@ -29,14 +29,12 @@ const state = reactive({
 })
 const {tags} = toRefs(state)
 
-// 点击标签栏
+//激活标签栏 
 interface tagType {
   id:number,
   name:string,
   path:string
 }
-
-//激活标签栏 
 function onTags(val:tagType){
   router.push(val.path)
 }
@@ -44,22 +42,17 @@ function onTags(val:tagType){
 // 删除标签栏
 function delTags(val:tagType){
   store.commit('SET_TAGS',{routeActive:val,isDelete:true})
-  console.log(state.tags[state.tags.length-1].path)
   router.push(state.tags[state.tags.length-1].path)
 }
 
-// 鼠标移入
-function moveIn(el){
+// 鼠标移入(鼠标移出)
+function moveInOrOut(el,status:string){
   let schedule = el.target.children[0]?.children
   if(schedule !== undefined && schedule.length === 1)
-  schedule[0].setAttribute('class','schedule-in')
-}
-
-// 鼠标移出
-function moveOut(el){
-  let schedule = el.target.children[0]?.children
-  if(schedule !== undefined && schedule.length === 1)
-  schedule[0].setAttribute('class','schedule-out')
+  return schedule[0].setAttribute('class',{
+    in:'schedule-in',
+    out:'schedule-out'
+  }[status])
 }
 
 </script>
