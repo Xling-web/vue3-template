@@ -15,8 +15,8 @@ import { message } from "@pureadmin/components";
 const store = useStore()
 
 const onclick = ()=>{
-  getLogin().then((res)=>{
-    // xlMessage("登陆成功",'success',20)
+  getLogin({name:'asd'}).then(()=>{
+    xlMessage("登陆成功",'success',20)
   })
 }
 

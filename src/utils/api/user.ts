@@ -2,7 +2,7 @@ import { http } from "../http";
 
 // 登录
 export const getLogin = (data: object) => {
-    return http.request("post", "/login", { data });
+    return http.request("post", "/login1", { data });
 }; 
 
 // 导航栏
